@@ -20,10 +20,10 @@ export default function Home() {
 				>
 					🔐 Auth
 				</h1>
-				<p className="text-white text-lg">A simple authentication servie</p>
+				<p className="text-white text-lg">um serviço de autenticação simples</p>
 				<LoginButton>
 					<Button variant="secondary" size="lg">
-						Sign in
+						Entrar
 					</Button>
 				</LoginButton>
 			</div>
