@@ -1,7 +1,7 @@
-import { Roboto } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import { cn } from '@/lib/utils';
 
-const font = Roboto({ subsets: ['latin'], weight: ['500'] });
+const font = Nunito({ subsets: ['latin'], weight: ['600'] });
 
 interface HeaderProps {
 	label: string;

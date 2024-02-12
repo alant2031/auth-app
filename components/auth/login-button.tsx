@@ -8,11 +8,11 @@ interface LoginButtonProps {
 	asChild?: boolean;
 }
 
-function LoginButton({
+export const LoginButton = ({
 	children,
 	mode = 'redirect',
 	asChild,
-}: LoginButtonProps) {
+}: LoginButtonProps) => {
 	const router = useRouter();
 	const handleClick = () => {
 		router.push('/auth/login');
@@ -26,6 +26,4 @@ function LoginButton({
 			{children}
 		</span>
 	);
-}
-
-export default LoginButton;
+};
