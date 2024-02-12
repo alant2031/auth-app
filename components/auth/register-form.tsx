@@ -40,6 +40,7 @@ export const RegisterForm = () => {
 			});
 		});
 	};
+
 	return (
 		<CardWrapper
 			headerLabel="Cadastre uma conta"
