@@ -35,15 +35,15 @@ export const LoginForm = () => {
 
 		startTransition(() => {
 			login(values).then((data) => {
-				setError(data.error);
-				setSuccess(data.success);
+				setError(data?.error);
+				setSuccess(data?.success);
 			});
 		});
 	};
 	return (
 		<CardWrapper
 			headerLabel="Seja bem-vindo de volta"
-			backButtonLabel="Não possui uma conta?"
+			backButtonLabel="Não tenho cadastro"
 			backButtonHref="/auth/register"
 			showSocial
 		>
