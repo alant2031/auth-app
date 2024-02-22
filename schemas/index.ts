@@ -4,6 +4,9 @@ export const LoginSchema = z.object({
 	email: z.string().email({ message: 'Email inválido' }),
 	password: z.string().min(1, { message: 'Senha requerida' }),
 });
+export const ResetSchema = z.object({
+	email: z.string().email({ message: 'Email inválido' }),
+});
 export const RegisterSchema = z.object({
 	email: z.string().email({ message: 'Email inválido' }),
 	password: z.string().min(6, { message: 'Senha precisa de 4+ caracteres' }),
