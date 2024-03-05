@@ -23,17 +23,21 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 		return { error: 'Esse email já está associado a outra conta' };
 	}
 
-	await db.user.create({
-		data: {
-			name,
-			email,
-			password: hashedPassword,
-		},
-	});
+	try {
+		await db.user.create({
+			data: {
+				name,
+				email,
+				password: hashedPassword,
+			},
+		});
 
-	const verificationToken = await generateVerificationToken(email);
-	await sendVerificationEmail(email, verificationToken.token);
-	return {
-		success: 'Email de confirmação enviado. Verifique.',
-	};
+		const verificationToken = await generateVerificationToken(email);
+		await sendVerificationEmail(email, verificationToken.token);
+		return {
+			success: 'Email de confirmação enviado. Verifique.',
+		};
+	} catch {
+		return { error: 'Erro interno. Tente Novamente.' };
+	}
 };

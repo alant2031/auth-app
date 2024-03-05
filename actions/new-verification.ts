@@ -13,7 +13,7 @@ export const newVerification = async (token: string) => {
 	const hasExpired = new Date(existingToken.expires) < new Date();
 
 	if (hasExpired) {
-		return { error: 'Token excedeu o prazo!' };
+		return { error: 'O token está fora de validade!' };
 	}
 
 	const existingUser = await getUserByEmail(existingToken.email);
@@ -21,17 +21,20 @@ export const newVerification = async (token: string) => {
 	if (!existingUser) {
 		return { error: 'Email não encontrado!' };
 	}
+	try {
+		await db.user.update({
+			where: {
+				id: existingUser.id,
+			},
+			data: {
+				emailVerified: new Date(),
+				email: existingToken.email,
+			},
+		});
 
-	await db.user.update({
-		where: {
-			id: existingUser.id,
-		},
-		data: {
-			emailVerified: new Date(),
-			email: existingToken.email,
-		},
-	});
-
-	await db.verificationToken.delete({ where: { id: existingToken.id } });
-	return { success: 'Email confirmado 😀' };
+		await db.verificationToken.delete({ where: { id: existingToken.id } });
+		return { success: 'Email confirmado 😀' };
+	} catch {
+		return { error: 'Erro interno. Tente Novamente.' };
+	}
 };
