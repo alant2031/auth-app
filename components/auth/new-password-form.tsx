@@ -36,7 +36,6 @@ export const NewPasswordForm = () => {
 	const onSubmit = (values: z.infer<typeof NewPasswordSchema>) => {
 		setError('');
 		setSuccess('');
-		console.log(values);
 
 		startTransition(() => {
 			newPassword(values, token).then((data) => {
