@@ -1,20 +1,16 @@
+'use client';
+
 import React from 'react';
-import { auth, signOut } from '@/auth';
+import { logout } from '@/actions/logout';
+import { useCurrentUser } from '@/hooks/use-current-user';
 
-async function SettingsPage() {
-	const session = await auth();
+function SettingsPage() {
+	const user = useCurrentUser();
 	return (
-		<div>
-			<p>{JSON.stringify(session)}</p>
-			<form
-				action={async () => {
-					'use server';
-
-					await signOut();
-				}}
-			>
-				<button type="submit">Sair</button>
-			</form>
+		<div className="bg-white p-10 rounded">
+			<button onClick={logout} type="button">
+				Sair
+			</button>
 		</div>
 	);
 }
