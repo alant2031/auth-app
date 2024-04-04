@@ -1,6 +1,3 @@
-import { Header } from '@/components/auth/header';
-import { BackButton } from '@/components/auth/back-button';
-
 import { CardWrapper } from '@/components/auth/card-wrapper';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 

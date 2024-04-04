@@ -8,7 +8,7 @@ function SettingsPage() {
 	const user = useCurrentUser();
 	return (
 		<div className="bg-white p-10 rounded">
-			<button onClick={logout} type="button">
+			<button onClick={() => logout()} type="button">
 				Sair
 			</button>
 		</div>

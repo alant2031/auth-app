@@ -56,6 +56,9 @@ export const {
 			if (token.role && session.user) {
 				session.user.role = token.role;
 			}
+			if (session.user) {
+				session.user.is2FA = token.is2FA as boolean;
+			}
 			return session;
 		},
 		async jwt({ token }) {
@@ -63,6 +66,7 @@ export const {
 			const existingUser = await getUserById(token.sub);
 			if (!existingUser) return token;
 			token.role = existingUser.role;
+			token.is2FA = existingUser.isTwoFactorEnabled;
 			return token;
 		},
 	},
