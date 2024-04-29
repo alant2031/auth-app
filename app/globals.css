@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
 html,
-body,
 :root {
 	height: 100%;
+}
+
+body {
+	height: 100vh;
 }
 
 @layer base {
