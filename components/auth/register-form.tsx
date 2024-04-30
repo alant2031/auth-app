@@ -34,10 +34,12 @@ export const RegisterForm = () => {
 		setSuccess('');
 
 		startTransition(() => {
-			register(values).then((data) => {
-				setError(data.error);
-				setSuccess(data.success);
-			});
+			register(values)
+				.then((data) => {
+					setError(data.error);
+					setSuccess(data.success);
+				})
+				.finally(() => form.reset());
 		});
 	};
 

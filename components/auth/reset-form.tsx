@@ -30,15 +30,17 @@ export const ResetForm = () => {
 	});
 
 	const onSubmit = (values: z.infer<typeof ResetSchema>) => {
-		setError('');
-		setSuccess('');
+		setError(undefined);
+		setSuccess(undefined);
 
 		startTransition(() => {
-			reset(values).then((data) => {
-				setError(data?.error);
-				// TODO: Add when add 2FA
-				setSuccess(data?.success);
-			});
+			reset(values)
+				.then((data) => {
+					setError(data?.error);
+
+					setSuccess(data?.success);
+				})
+				.finally(() => form.reset());
 		});
 	};
 	return (
